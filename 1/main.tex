@@ -1,0 +1,88 @@
+\documentclass{article} % say
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary {babel,angles,quotes}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\textbf{Задача}: В четырёхугольнике $ABCD$ известно, что
+$\angle A=30\degree$, $\angle B=90\degree$, а также
+$AB=AD=BC$. Найдите $\angle C$.
+
+\begin{tikzpicture}[scale=1]
+  \coordinate [label={$A$}]      (A) at (0,3);
+  \coordinate [label=left:{$B$}] (B) at (0,0);
+  \coordinate [label={$C$}]      (C) at (3,0);
+  \coordinate [label={30:$D$}]   (D) at (1.5,1);
+
+  \draw (A) -- (B) -- (C) -- (D) -- (A);
+
+  \pic [draw=black, fill=black!20, angle radius=5mm, "$30\degree$",
+  angle eccentricity=1.5] {angle = B--A--D};
+
+  \pic [draw=black, fill=black!20, angle radius=5mm,
+  "\textcolor{red}?", angle eccentricity=1.5] {angle = D--C--B};
+
+  \pic[draw=black, fill=black!20, angle radius=3mm]
+    {right angle = A--B--C};
+
+  \tkzMarkSegment[color=black,pos=0.5,mark=|](A,B)
+  \tkzMarkSegment[color=black,pos=0.5,mark=|](A,D)
+  \tkzMarkSegment[color=black,pos=0.5,mark=|](B,C)
+
+  \foreach \point in {A,B,C,D} \fill [black] (\point) circle (1pt);
+\end{tikzpicture}
+
+\textbf{Решение}: Достроим $ABC$ до прямоугольника $ABCE$. Так как $AB=BC$, то полученная фигура является квадратом. Проведём $ED$. Так как $\angle DAE = 90\degree - \angle BAD = 60\degree$, а $AE=AD$, то треугольник $ADE$ равносторонний. Отсюда, $\angle AED = 60\degree$, а $\angle DEC=90\degree - \angle AED=30\degree$. Так как треугольник $DEC$ является равнобедренным ($DE=EC$), то $\angle DCE = \frac{180\degree - \angle DEC}{2} = 75\degree$. Соответственно, искомый угол равен $90\degree - \angle DCE = 15\degree$.
+
+\begin{tikzpicture}[scale=2]
+  \coordinate [label={$A$}]            (A) at (0,3);
+  \coordinate [label=left:{$B$}]       (B) at (0,0);
+  \coordinate [label=right:{$C$}]      (C) at (3,0);
+  \coordinate [label={210:$D$}]         (D) at (1.5,1);
+
+
+  \draw (A) -- (B) -- (C) -- (D) -- (A);
+
+  \pic [draw=black, fill=black!20, angle radius=5mm, "$30\degree$",
+  angle eccentricity=1.5] {angle = B--A--D};
+
+  \pic [draw=black, fill=black!20, angle radius=5mm,
+  "$15\degree$", angle eccentricity=1.5] {angle = D--C--B};
+
+  \pic[draw=black, fill=black!20, angle radius=3mm] {right angle =
+    A--B--C};
+
+  \tkzMarkSegment[color=black,pos=0.5,mark=|](A,B)
+  \tkzMarkSegment[color=black,pos=0.5,mark=|](A,D)
+  \tkzMarkSegment[color=black,pos=0.5,mark=|](B,C)
+
+  \coordinate [label={$E$}]     (E) at (3,3);
+  \draw[red] (A) -- (E) -- (C);
+  \tkzMarkSegment[color=red,pos=0.5,mark=|](A,E)
+  \tkzMarkSegment[color=red,pos=0.5,mark=|](E,C)
+
+  \draw[red] (E) -- (D);
+  \pic [draw=red, fill=red!20, angle radius=5mm,
+  "$60\degree$", angle eccentricity=1.5] {angle = D--A--E};
+  \tkzMarkSegment[color=red,pos=0.5,mark=|](E,D)
+
+  \pic [draw=red, fill=red!20, angle radius=5mm,
+  "$60\degree$", angle eccentricity=1.5] {angle = A--E--D};
+  \pic [draw=brown, fill=brown!20, angle radius=5mm,
+  "$30\degree$", angle eccentricity=1.5] {angle = D--E--C};
+
+  \pic [draw=blue, fill=blue!20, angle radius=5mm,
+  "$75\degree$", angle eccentricity=1.5] {angle = E--C--D};
+    \pic [draw=blue, fill=blue!20, angle radius=5mm,
+  "$75\degree$", angle eccentricity=1.5] {angle = C--D--E};
+
+  \foreach \point in {A,B,C,D} \fill [black] (\point) circle (1pt);
+    \fill [red] (E) circle (1pt);
+\end{tikzpicture}
+
+\end{document}
+
+
