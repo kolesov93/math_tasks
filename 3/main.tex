@@ -1,0 +1,43 @@
+\documentclass{article} % say
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary {babel,angles,quotes,positioning}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\textbf{Задача}: Площадь треугольника $ABC$ равна $100$. Медиана $CK$ ($K \in AB$) и биссектриса $BD$ ($D \in AC$) пересекаются в точке $E$, причём $AD=3DC$. Найдите площадь $AKED$.  
+
+\begin{center}
+\begin{tikzpicture}[scale=1.25]
+\tkzDefPoints{0/0/A,4/3/B,4.745/1.5092/C}
+
+\tkzDefLine[bisector](C,B,A) \tkzGetPoint{b}
+\tkzInterLL(B,b)(A,C) \tkzGetPoint{D}
+
+\tkzDefMidPoint(A,B) \tkzGetPoint{K}
+
+\tkzInterLL(B,D)(K,C) \tkzGetPoint{E}
+
+\tkzDrawPolygon(A,B,C)
+\tkzDrawSegments(B,D C,K)
+\tkzDrawPoints(A,B,C,D,K,E)
+\tkzLabelPoints(A,C,K,D)
+\tkzLabelPoints[above right](E)
+\tkzLabelPoints[right](B)
+
+\tkzMarkAngles[mark=|,size=0.5](A,B,D D,B,C)
+\tkzMarkSegments[mark=|](A,K K,B)
+\end{tikzpicture}
+\end{center}
+
+\textbf{Решение}: Так как $AD=3DC$ и $BD$~-- биссектриса, то $S_{ADB} = 3S_{BDC}$, а значит $S_{ADB} = 75$. Так как $CK$~-- медиана, то $S_{BKC} = \frac{1}{2} S_{ABC} = 50$. Заметим, что $BE$~-- биссектриса треугольника $BKC$, а значит $\dfrac{S_{KEB}}{S_{BEC}} = \dfrac{KE}{EC} = \dfrac{KB}{BC}$. Так как $AB=3BC$ (из того, что $BD$~-- биссектриса и $AD=3DC$), а $KB=\frac{1}{2}AB$, то $2KB=3BC$. Значит, $S_{KEB} = \frac{3}{5} S_{BKC} = 30$. А значит, $S_{AKED} = S_{ABD}-S_{BKE}=45$.
+
+\textbf{Источник}: \url{https://tinyurl.com/y2pvvnfm} 
+
+\end{document}
+
+
