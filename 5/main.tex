@@ -1,0 +1,64 @@
+\documentclass{article} % say
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary {babel,angles,quotes,positioning}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\textbf{Задача}: Дано два отрезка: $a$ и $d$. С помощью циркуля и линейки постройте прямугольный треугольник, в котором длина одного из катетов равна длине $a$ и разница длин гипотезы и второго катета равна длине $d$.
+
+\textbf{Решение}: Обозначим длину второго катета за $x$, тогда:
+
+\begin{align*}
+  a^2 + x^2 &= (x+d)^2 \\
+  a^2 + x^2 &= x^2 + 2xd + d^2 \\
+  a^2 - d^2 &= 2xd \\
+  (a - d) (a + d) &= 2xd
+\end{align*}
+
+Таким образом:
+
+\begin{equation}
+  x = \frac{a + d}{2d} \cdot (a - d) 
+\end{equation}
+
+Построим треугольник $ABC$, причём $|AB| = a + d$ и $|BC| = 2d$, с любым углом между ними, например с прямым.
+На отрезке $BC$ найдём точку $D$, такую что $|BD| = a - d$.
+Через точку $D$ проведём прямую, параллельную $AC$. Точку пересечения этой прямой с $BC$ обозначим за $E$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.25]
+\tkzDefPoints{0/6/A,0/0/B,4/0/C,2/0/D}
+\tkzDefLine[parallel=through D](A,C) \tkzGetPoint{d'}
+\tkzInterLL(B,A)(D,d') \tkzGetPoint{E}
+\tkzDrawLine[add=0.2 and 0.2](D,E)
+
+\tkzDrawPolygon(A,B,C)
+
+\tkzMarkAngles[mark=|,size=0.5](B,A,C B,E,D)
+\tkzMarkAngles[mark=||,size=0.5](E,D,B A,C,D)
+
+\tkzDrawPoints(A,B,C,D,E)
+\tkzLabelPoints(B,C)
+\tkzLabelPoints[right](A,E)
+\tkzLabelPoints[above right](D)
+\end{tikzpicture}
+\end{center}
+
+Треугольник $BED$ по построение подобен треугольник $BAC$. А значит $\frac{|BE|}{|BD|} = \frac{|BA|}{|BC|}$, из чего:
+
+\begin{equation}
+  |BE| = \frac{|BA|}{|BC|} \cdot |BD| = \frac{a + d}{2d} \cdot (a - d) = x
+\end{equation}
+
+Теперь осталось построить прямоугольный треугольник по двум катетам.
+
+\textbf{Источник}: А.~П.~Киселёв, <<Элементарная геометрия. Книга для учителя>> (1980), страница 36, задача 44. \url{https://disk.yandex.ru/d/QqFzGPzxTVXGag}
+
+\end{document}
+
+

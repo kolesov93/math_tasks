@@ -1,0 +1,43 @@
+\documentclass{article} % say
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary {babel,angles,quotes,positioning}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\textbf{Задача}: В квадрате $ABCD$ заданы точки $E$ и $F$, таким образом, что $AE=12$, $EF=3$, $FC=9$, причём $\angle AEF$ и $\angle EFC$ прямые. Найдите сторону квадрата.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.3]
+  \coordinate [label=below:{$A$}] (A) at (0,0);
+  \coordinate [label=below:{$B$}] (B) at (15,0);
+  \coordinate [label=above:{$C$}] (C) at (15,15);
+  \coordinate [label=above:{$D$}] (D) at (0,15);
+  \coordinate [label=right:{$E$}] (E) at (9.6,7.2);
+  \coordinate [label=left:{$F$}]  (F) at (7.8,9.6);
+
+  \draw (A) -- (B) node[midway,sloped,below=0.2,red] {?};
+  \draw (B) -- (C) -- (D) -- (A);
+  \draw (A) -- (E) node[midway,sloped,above] {$12$};
+  \draw (E) -- (F) node[midway,sloped,above] {$3$};
+  \draw (F) -- (C) node[midway,sloped,above] {$9$};
+
+  \pic[draw=black, fill=black!20, angle radius=3mm]
+    {right angle = A--E--F};
+  \pic[draw=black, fill=black!20, angle radius=3mm]
+    {right angle = E--F--C};
+
+   \tkzMarkSegment[color=black,pos=0.5,mark=|](A,B)
+   \tkzMarkSegment[color=black,pos=0.5,mark=|](B,C)
+   \tkzMarkSegment[color=black,pos=0.5,mark=|](C,D)
+   \tkzMarkSegment[color=black,pos=0.5,mark=|](D,A)
+    
+  \foreach \point in {A,B,C,D,E,F} \fill [black] (\point) circle (1pt);
+\end{tikzpicture}
+\end{center}
+
+\end{document}
+
+

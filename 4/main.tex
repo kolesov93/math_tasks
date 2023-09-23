@@ -1,0 +1,74 @@
+\documentclass{article} % say
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary {babel,angles,quotes,positioning}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\textbf{Задача}: Найти все корни уравнения
+\begin{equation}
+  x \sqrt{2x^2 - 511} - \sqrt{x} \sqrt[4]{2x^2 - 511} = 12
+\end{equation}
+
+\textbf{Решение}: Заменим $a = \sqrt{x} \sqrt[4]{2x^2 - 511}$, тогда:
+
+\begin{equation}
+  a^2 - a = 12
+\end{equation}
+
+Откуда:
+
+\begin{equation}
+  \left[
+    \begin{aligned}
+      \sqrt{x} \sqrt[4]{2x^2 - 511} & = -3 \\
+      \sqrt{x} \sqrt[4]{2x^2 - 511} & = 4
+    \end{aligned}
+  \right.
+  \label{eq:union}
+\end{equation}
+
+В первом случае решений нет. Докажем это. Возведём обе части в четвёртую степень и сделаем замену $t = x^2$.
+
+\begin{equation}
+  t (2t - 1) = 81
+\end{equation}
+
+Получим корни:
+
+\begin{equation}
+  t = \dfrac{511 \pm \sqrt{261769}}{4}
+\end{equation}
+
+Имеем два корня: $t_1$ отрицательное число близкое к нулю, $t_2$~--- положительное число, причём $2t_2 - 511 > 0$.
+
+Рассмотрим $t_1$. В этом случае $x = \pm ai$, где $i$~-- мнимая единица, $a>0$. В любом из этих случаев $\sqrt{x} = \mp \sqrt{a}$, т.е. действительное число, а $x^2 - 511 < 0$, а значит $\sqrt[4]{x^2 - 511}$ не может быть действительным. Их произведение не может быть действительным.
+
+Рассмотрим $t_2$. 
+
+Во втором случае уравнения \ref{eq:union}:
+
+\begin{equation}
+  \sqrt{x} \sqrt[4]{2x^2 - 511} = 4
+\end{equation}
+
+Возведём обе части в четвёртую степень и сделаем замену $t = x^2$
+
+\begin{equation}
+\begin{aligned}
+  t (2t - 511) & = 256 \\
+  t & = \dfrac{511 \pm 513}{4} 
+\end{aligned}
+\end{equation}
+
+Отсюда: $x = \{16, -\frac{i}{4}\}$.
+
+\textbf{Источник}: Репетиционное тестирование ЦТ 2023-1, вариант 3, задание B17 \url{https://tinyurl.com/54jakpdm} 
+
+\end{document}
+
+
