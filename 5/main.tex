@@ -9,7 +9,7 @@
 \usepackage[russian]{babel}
 \begin{document}
 
-\textbf{Задача}: Дано два отрезка: $a$ и $d$. С помощью циркуля и линейки постройте прямугольный треугольник, в котором длина одного из катетов равна длине $a$ и разница длин гипотезы и второго катета равна длине $d$.
+\textbf{Задача}: Дано два отрезка: $a$ и $d$. С помощью циркуля и линейки постройте прямоугольный треугольник, в котором длина одного из катетов равна длине $a$, и разница длин гипотенузы и второго катета равна длине $d$.
 
 \textbf{Решение}: Обозначим длину второго катета за $x$, тогда:
 
@@ -49,13 +49,48 @@
 \end{tikzpicture}
 \end{center}
 
-Треугольник $BED$ по построение подобен треугольник $BAC$. А значит $\frac{|BE|}{|BD|} = \frac{|BA|}{|BC|}$, из чего:
+Треугольник $BED$ по построению подобен треугольнику $BAC$. А значит $\frac{|BE|}{|BD|} = \frac{|BA|}{|BC|}$, из чего:
 
 \begin{equation}
   |BE| = \frac{|BA|}{|BC|} \cdot |BD| = \frac{a + d}{2d} \cdot (a - d) = x
 \end{equation}
 
 Теперь осталось построить прямоугольный треугольник по двум катетам.
+
+\textbf{Альтернативное решение от Станислава Глебика}: Построим прямоугольный треугольник $ABC$ с катетами $|AB|=a$, $|AC|=d$.
+На гипотенузе $BC$ найдём середину $D$ и проведём через неё перпендикуляр. Точку пересечения этого перпендикуляра с $AC$ обозначим за $E$.
+
+Рассмотрим треугольник $CBE$. Он является равнобедренным, так как в нём $DE$ является одновременно и медианой, и высотой. Следовательно $|CE| = |EB|$.
+
+Заметим, что $|CE| = |AE| + |AC| = |AE| + d = |BE|$. В то же время, $AE$~--- катет треугольника $AEB$, а $BE$~--- его гипотенуза. Следовательно, треугольник $ABE$~--- искомый. 
+
+\begin{center}
+\begin{tikzpicture}[scale=1.25]
+\tkzDefPoints{0/0/A,4/0/B,0/2/C}
+
+\tkzDrawPolygon(A,B,C)
+\tkzDefMidPoint(B,C) \tkzGetPoint{D}
+\tkzDefLine[orthogonal=through D](B,C) \tkzGetPoint{d'}
+\tkzInterLL(C,A)(D,d') \tkzGetPoint{E}
+
+
+\tkzMarkSegments[mark=|,size=6pt](B,D D,C)
+\tkzMarkRightAngle[size=.2,draw](E,D,C)
+
+
+\tkzFillPolygon[blue!10](A,B,E)
+
+\tkzDrawSegments[dashed,red,line width=0.5mm](C,E B,E)
+\tkzDrawSegment(B,E)
+\tkzDrawLine[add=0.2 and 0.2](D,E)
+\tkzDrawLine[add=0.2 and 0.2](C,E)
+\tkzDrawPoints(A,B,C,D,E)
+\tkzLabelPoints(A,B,E)
+\tkzLabelPoints[above right](D,C)
+\tkzLabelSegment(A,B){a}
+\tkzLabelSegment(A,C){d}
+\end{tikzpicture}
+\end{center}
 
 \textbf{Источник}: А.~П.~Киселёв, <<Элементарная геометрия. Книга для учителя>> (1980), страница 36, задача 44. \url{https://disk.yandex.ru/d/QqFzGPzxTVXGag}
 
