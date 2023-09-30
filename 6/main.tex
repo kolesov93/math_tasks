@@ -1,0 +1,51 @@
+\documentclass{article} % say
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{amsfonts}
+\usetikzlibrary {babel,angles,quotes,positioning}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\textbf{Задача}: Докажите, что $\cos 1\degree$ иррационален.
+
+\textbf{Подсказка}: Докажите равенство:
+
+\begin{equation}
+\cos(nx) = 2\cos(x) \cos\left( (n-1) x \right) - \cos\left( (n-2) x \right) \label{eq:hint}
+\end{equation}
+
+\textbf{Решение}: Воспользуемся формулами косинуса суммы и разницы:
+
+\begin{align*}
+  \cos(\alpha + \beta) &= \cos\alpha \cos\beta - \sin\alpha \sin\beta \\
+  \cos(\alpha - \beta) &= \cos\alpha \cos\beta + \sin\alpha \sin\beta
+\end{align*}
+
+Примем $\alpha = (n-1)x$, $\beta=x$, тогда:
+
+\begin{align}
+  \cos(nx) &= \cos((n-1)x) \cos x - \sin((n-1)x) \sin x \label{eq:sum} \\
+  \cos((n-2)x) &= \cos((n-1)x) \cos x + \sin((n-1)x) \sin x \label{eq:diff}
+\end{align}
+
+При сложении уравнений \ref{eq:sum} и \ref{eq:diff} получаем уравнение \ref{eq:hint}.
+
+Теперь положим, что $\cos 1\degree$ рационален. Покажем, что тогда $\cos k\degree$, где $k \in \mathbb{N}$, также рационален. Отсюда придём к противоречию, например при $k=30$.
+
+Действительно, пусть $\cos x$ рационален, докажем, что $\cos nx$ рационален при любом $n \in \mathbb{N}$:
+
+\begin{itemize}
+\item при $n=1$ утверждение тривиально;
+\item при $n=2$: $\cos(2x) = 2\cos^2x - 1$, т.~е. рационален;
+\item при $n>2$ воспользуемся индукцией: по уравнению \ref{eq:hint} $\cos(nx)$~--- это рациональное выражение над рациональными числами, т.~е. рациональное число.
+\end{itemize}
+
+\textbf{Источник}: \url{https://t.me/obznam/1409}
+
+\end{document}
+
+
