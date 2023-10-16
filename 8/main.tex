@@ -1,0 +1,51 @@
+\documentclass{article} % say
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary {babel,angles,quotes,positioning}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\textbf{Задача}: Дан треугольник $ABC$, причём $|AB| \neq |AC|$. В этом треугольнике $AL$~--- биссектриса, а $AM$~--- медиана. Докажите, что $|AL| < |AM|$. 
+
+\textbf{Решение}: 
+
+\begin{center}
+\begin{tikzpicture}[scale=1.25]
+\tkzDefPoints{0/0/A,3/-5/B,-3/-1/C}
+\tkzDefMidPoint(B,C) \tkzGetPoint{M}
+\tkzDefLine[bisector](C,A,B) \tkzGetPoint{l}
+\tkzInterLL(A,l)(B,C) \tkzGetPoint{L}
+
+\tkzDrawPolygon(A,B,C)
+\tkzDrawLine[add=0 and 0](A,M)
+\tkzDrawLine[add=0 and 0](A,L)
+
+\tkzMarkAngles[mark=|,size=0.3](C,A,L)
+\tkzMarkAngles[mark=|,size=0.5](L,A,B)
+
+\tkzDrawPoints(A,B,C,M,L)
+\tkzLabelPoints(B)
+\tkzLabelPoints[right](A)
+\tkzLabelPoints[below](C,L,M)
+\end{tikzpicture}
+\end{center}
+
+Положим без потери общности, что $|AC| < |AB|$. Значит:
+
+\begin{equation}
+  \angle ACB > \angle ABC \label{neq1}
+\end{equation}
+
+Заметим, что $\angle ALC = \pi - \angle ACB - \angle LAC$, а $\angle ALM = \angle ALB = \pi - \angle LAB - \angle ABL = \pi - \angle LAB - \angle ABC$. Но так как $\angle LAC = \angle LAB$ ($AL$~--- биссектриса) и по неравенству \ref{neq1} выходит, что $\angle ALC < \angle ALM$.
+
+$\angle ALC + \angle ALM = \pi$, а значит $\angle ALM$~--- тупой. Следовательно, в треугольнике $LAM$ сторона $AM$~--- наибольшая и, в частности, длинней $AL$. Что и требовалось доказать.
+
+\textbf{Источник}: А.~П.~Киселёв, <<Элементарная геометрия. Книга для учителя>> (1980), страница 121, задача 244. \url{https://disk.yandex.ru/d/QqFzGPzxTVXGag}
+
+\end{document}
+
+
