@@ -35,6 +35,8 @@ $AB=AD=BC$. Найдите $\angle C$.
   \foreach \point in {A,B,C,D} \fill [black] (\point) circle (1pt);
 \end{tikzpicture}
 
+\clearpage
+
 \textbf{Решение}: Достроим $ABC$ до прямоугольника $ABCE$. Так как $AB=BC$, то полученная фигура является квадратом. Проведём $ED$. Так как $\angle DAE = 90\degree - \angle BAD = 60\degree$, а $AE=AD$, то треугольник $ADE$ равносторонний. Отсюда, $\angle AED = 60\degree$, а $\angle DEC=90\degree - \angle AED=30\degree$. Так как треугольник $DEC$ является равнобедренным ($DE=EC$), то $\angle DCE = \frac{180\degree - \angle DEC}{2} = 75\degree$. Соответственно, искомый угол равен $90\degree - \angle DCE = 15\degree$.
 
 \begin{tikzpicture}[scale=2]

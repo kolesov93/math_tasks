@@ -1,0 +1,199 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=22mm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{babel,calc,angles,decorations.markings}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Задача 13. Расстояние от вершины квадрата до прямой}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\definecolor{ink}{HTML}{263544}
+\definecolor{construction}{HTML}{537E83}
+\definecolor{alphacolor}{HTML}{C66017}
+\definecolor{betacolor}{HTML}{7954A3}
+\definecolor{trianglefill}{HTML}{E8EEF9}
+\definecolor{rectanglefill}{HTML}{EEF6F4}
+
+% Reflect the construction across x=y, keeping all original point names.
+% A, B, C, D go clockwise, with M on AD and K on CD.
+% Exact coordinates satisfy MK = CK; O and T are orthogonal projections.
+\newcommand{\points}{%
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (0,5);
+  \coordinate (C) at (5,5);
+  \coordinate (D) at (5,0);
+  \coordinate (M) at (2.5,0);
+  \coordinate (K) at (5,1.875);
+  \coordinate (Ldir) at ($(M)+(-3,4)$);
+  \coordinate (O) at ($(M)!(C)!(Ldir)$);
+  \coordinate (T) at ($(C)!(K)!(O)$);
+}
+\newcommand{\onemark}[2]{%
+  \path[postaction={decorate},decoration={markings,
+    mark=at position 0.5 with {\draw[ink,line width=.6pt] (0,-2.4pt)--(0,2.4pt);}}]
+    (#1)--(#2);
+}
+\newcommand{\twomarks}[2]{%
+  \path[postaction={decorate},decoration={markings,
+    mark=at position 0.5 with {%
+      \draw[ink,line width=.6pt] (-1.4pt,-2.4pt)--(-1.4pt,2.4pt);
+      \draw[ink,line width=.6pt] (1.4pt,-2.4pt)--(1.4pt,2.4pt);}}]
+    (#1)--(#2);
+}
+\newcommand{\geomrightmark}[3]{%
+  \pic[draw=ink,line width=.45pt,angle radius=2.1mm]
+    {right angle=#1--#2--#3};
+}
+\newcommand{\basefigure}{%
+  \draw[ink,line width=.8pt] (A)--(B)--(C)--(D)--cycle;
+  \draw[construction,dashed,line width=.65pt]
+    ($(M)+(.45,-.60)$)--($(M)+(-3.4875,4.65)$);
+  \node[construction,above] at (-.85,4.78) {$\ell$};
+  \draw[ink,line width=.75pt] (M)--(K);
+  \geomrightmark{K}{M}{Ldir}
+  \geomrightmark{A}{D}{K}
+  \onemark{M}{K}\onemark{K}{C}
+}
+\newcommand{\baselabels}{%
+  \foreach \p in {A,B,C,D,M,K} \fill[ink] (\p) circle (1.4pt);
+  \node[below left] at (A) {$A$};
+  \node[above left] at (B) {$B$};
+  \node[above] at (C) {$C$};
+  \node[below right] at (D) {$D$};
+  \node[below left] at (M) {$M$};
+  \node[right] at (K) {$K$};
+}
+\newcommand{\constructionfigure}{%
+  \draw[construction,dashed,line width=.65pt]
+    ($(O)+(-.60,-.45)$)--($(C)+(.60,.45)$);
+  \node[construction,above] at ($(C)+(.52,.49)$) {$m$};
+  \draw[ink,line width=.75pt] (K)--(T) (M)--(O);
+  \draw[construction,line width=1pt] (C)--(O);
+  \geomrightmark{M}{K}{T}
+  \geomrightmark{K}{T}{O}
+  \geomrightmark{T}{O}{M}
+  \onemark{T}{O}
+}
+\newcommand{\additionallabels}{%
+  \fill[ink] (T) circle (1.4pt) (O) circle (1.4pt);
+  \node[above] at (T) {$T$};
+  \node[below] at ($(O)+(-.02,-.07)$) {$O$};
+}
+\newcommand{\anglelabels}{%
+  \draw[alphacolor,line width=.65pt]
+    ($(M)+(0:.60)$) arc[start angle=0,end angle=36.869898,radius=.60];
+  \node[alphacolor] at ($(M)+(18.434949:.89)$) {$\alpha$};
+  \draw[alphacolor,line width=.65pt]
+    ($(K)+(90:.65)$) arc[start angle=90,end angle=126.869898,radius=.65];
+  \node[alphacolor] at ($(K)+(108.434949:.96)$) {$\alpha$};
+  \foreach \p in {K,C}{%
+    \draw[betacolor,line width=.65pt]
+      ($(\p)+(216.869898:.46)$) arc[start angle=216.869898,end angle=270,radius=.46];
+    \draw[betacolor,line width=.65pt]
+      ($(\p)+(216.869898:.52)$) arc[start angle=216.869898,end angle=270,radius=.52];
+    \node[betacolor] at ($(\p)+(243.434949:.80)$) {$\beta$};
+  }
+}
+
+\begin{document}
+
+\begin{center}
+  {\large\bfseries Задача 13. Расстояние от вершины квадрата до прямой}
+\end{center}
+
+\textbf{Условие.} На сторонах $CD$ и $AD$ квадрата $ABCD$ выбраны
+соответственно точки $K$ и $M$, причём $MK=CK$.
+Через $M$ проведена прямая $\ell$, перпендикулярная $MK$.
+Докажите, что расстояние от $C$ до $\ell$ равно стороне квадрата.
+
+\begin{center}
+  \begin{tikzpicture}[scale=.98,every node/.style={font=\small}]
+    \points
+    \basefigure
+    \baselabels
+  \end{tikzpicture}
+
+  {\small Рис. 1. Построение из условия: $MK=CK$, $\ell\perp MK$.}
+\end{center}
+
+\clearpage
+
+\textbf{Решение. Дополнительное построение.}
+Проведём через $C$ прямую $m\perp\ell$ и обозначим $O=m\cap\ell$.
+Тогда $CO$~--- искомое расстояние. Из $K$ опустим перпендикуляр на $m$;
+его основание обозначим $T$.
+
+Прямые $MK$ и $m$ перпендикулярны одной и той же прямой $\ell$,
+поэтому $MK\parallel m$. Аналогично, $KT\perp m$ и $\ell\perp m$,
+откуда $KT\parallel\ell$. Следовательно, $TKMO$~--- прямоугольник, и
+\[
+  TO=MK=CK.
+\]
+
+\begin{center}
+  \begin{tikzpicture}[scale=.98,every node/.style={font=\small}]
+    \points
+    \fill[rectanglefill] (T)--(K)--(M)--(O)--cycle;
+    \basefigure
+    \constructionfigure
+    \baselabels
+    \additionallabels
+  \end{tikzpicture}
+
+  {\small Рис. 2. Прямоугольник $TKMO$ и перпендикуляр $CO$ к прямой $\ell$.}
+\end{center}
+
+\newpage
+
+\textbf{Равные треугольники.}
+Рассмотрим прямоугольные треугольники $MKD$ и $KCT$.
+Их гипотенузы $MK$ и $KC$ равны по условию. Обозначим
+\[
+  \alpha=\angle KMD,\qquad \beta=\angle MKD=90^\circ-\alpha.
+\]
+
+\begin{center}
+  \begin{tikzpicture}[scale=1.30,every node/.style={font=\small}]
+    \points
+    \fill[rectanglefill] (T)--(K)--(M)--(O)--cycle;
+    \fill[trianglefill] (M)--(K)--(D)--cycle;
+    \fill[trianglefill] (K)--(C)--(T)--cycle;
+    \basefigure
+    \constructionfigure
+    \anglelabels
+    \twomarks{K}{D}\twomarks{C}{T}
+    \baselabels
+    \additionallabels
+  \end{tikzpicture}
+
+  {\small Рис. 3. $\triangle MKD\cong\triangle KCT$;
+  одинаковыми дугами отмечены равные углы.}
+\end{center}
+
+В прямоугольнике $TKMO$ угол $MKT$ прямой. Поскольку лучи $KD$ и $KC$
+противоположны, получаем
+\[
+  \angle TKC=180^\circ-\beta-90^\circ=90^\circ-\beta=\alpha.
+\]
+Значит, $\triangle MKD\cong\triangle KCT$ по гипотенузе и острому углу.
+Отсюда $CT=KD$; оставшиеся острые углы обоих треугольников равны $\beta$.
+
+\textbf{Порядок точек.}
+Луч на прямой $m$, исходящий из $C$ и сонаправленный $KM$, образует с $CK$
+острый угол $\beta$. Поэтому основание перпендикуляра $T$ лежит на этом луче.
+В прямоугольнике $TKMO$ луч $TO$ также сонаправлен $KM$.
+Следовательно, точки расположены в порядке $C,T,O$, и длины можно сложить:
+\[
+  \boxed{CO=CT+TO=KD+CK=CD.}
+\]
+Таким образом, расстояние от $C$ до $\ell$ равно стороне квадрата.
+
+\textbf{Источник:}
+\href{https://olympiads.mccme.ru/regata/20232024/reg8.htm}{Математическая регата
+8 классов, 27 января 2024 года, задача 2.2}.
+
+\end{document}
