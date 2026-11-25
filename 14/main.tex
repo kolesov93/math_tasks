@@ -1,0 +1,41 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[margin=22mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Задача 14. Две метки}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\begin{document}
+
+\begin{center}
+  {\large\bfseries Задача 14. Две метки}
+\end{center}
+
+\textbf{Условие.} Двух друзей взяли в плен. Каждому поставят на лбу метку,
+цвет которой выберут случайно: чёрный или белый. Каждый сможет увидеть
+только метку другого. Затем друзья одновременно назовут по одному цвету.
+Если хотя бы один из них угадает цвет собственной метки, обоих отпустят.
+
+До того как им поставят метки, друзья могут договориться о стратегии.
+После этого общаться будет нельзя. Как им договориться, чтобы обоих
+наверняка отпустили?
+
+\smallskip
+{\small Источник: u/ConnectingTheDotsCh,
+\href{https://www.reddit.com/r/puzzles/comments/1y4jw6m/guess_the_color_of_the_mark/}{\emph{Guess the color of the mark!}} (Reddit).}
+
+\clearpage
+
+\textbf{Решение.} Пусть первый называет тот цвет, который видит у второго.
+Если метки одного цвета, первый угадает. В каком случае всё зависит
+от ответа второго? Когда первый ошибается, то есть когда метки разного цвета.
+
+Значит, второму достаточно всегда называть цвет, противоположный тому,
+который он видит у первого. Тогда при одинаковых метках угадает первый,
+а при разных~--- второй. В любом случае обоих отпустят.
+
+\end{document}

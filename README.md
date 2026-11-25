@@ -19,6 +19,7 @@
 | 11 | Пары с запрещёнными суммой и разностью | Комбинаторика, алгоритмы | [PDF](11/main.pdf) · [LaTeX](11/main.tex) · [C++](11/main.cpp) | [Codeforces 1935D](https://codeforces.com/contest/1935/problem/D), ограничения изменены |
 | 12 | Массив без одной суммы | Комбинаторика, алгоритмы | [PDF](12/main.pdf) · [LaTeX](12/main.tex) · [C++](12/main.cpp) | [Codeforces 1965B](https://codeforces.com/contest/1965/problem/B) |
 | 13 | Квадрат и прямая | Геометрия | [PDF](13/main.pdf) · [LaTeX](13/main.tex) | [Регата, 8 класс, 27.01.2024, №2.2](https://olympiads.mccme.ru/regata/20232024/reg8.htm) |
+| 14 | Две метки | Логика, стратегии | [PDF](14/main.pdf) · [LaTeX](14/main.tex) | [Guess the color of the mark! (Reddit)](https://www.reddit.com/r/puzzles/comments/1y4jw6m/guess_the_color_of_the_mark/) |
 
 ## Сборка PDF
 
